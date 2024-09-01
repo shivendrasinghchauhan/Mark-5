@@ -1,0 +1,60 @@
+// Variables
+$primary-color: #3498db;
+$secondary-color: #2ecc71;
+$font-stack: 'Arial', sans-serif;
+$border-radius: 5px;
+
+// Mixin for button styles
+@mixin button-styles($bg-color, $text-color) {
+  background-color: $bg-color;
+  color: $text-color;
+  border: none;
+  border-radius: $border-radius;
+  padding: 10px 20px;
+  font-family: $font-stack;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: darken($bg-color, 10%);
+  }
+}
+
+// Functions
+@function calculate-rem($pixels) {
+  $base-font-size: 16px;
+  @return $pixels / $base-font-size * 1rem;
+}
+
+// Styles
+body {
+  font-family: $font-stack;
+  background-color: #ecf0f1;
+  margin: 0;
+  padding: 0;
+}
+
+.header {
+  background-color: $primary-color;
+  color: white;
+  padding: 20px;
+  text-align: center;
+}
+
+.container {
+  padding: 20px;
+  
+  .title {
+    font-size: calculate-rem(24px);
+    color: $primary-color;
+  }
+
+  .button-primary {
+    @include button-styles($primary-color, white);
+  }
+
+  .button-secondary {
+    @include button-styles($secondary-color, white);
+  }
+}
